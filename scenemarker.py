@@ -1,7 +1,10 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
+
+#this script turns movies into shot-by-shot gifs
+#run this script from the command line or just put your path and save_path directly into first two
+#variables and run
 
 
 path = input("Enter the file path:")
@@ -11,8 +14,6 @@ save_path = input("Enter folder path you want to save the gifs to--DO NOT PUT A 
 # Standard PySceneDetect imports:
 from scenedetect import VideoManager
 from scenedetect import SceneManager
-
-# For content-aware scene detection:
 from scenedetect.detectors import ContentDetector
 
 def find_scenes(video_path, threshold=30.0):
@@ -33,13 +34,7 @@ def find_scenes(video_path, threshold=30.0):
     return scene_manager.get_scene_list()
 
 
-# In[ ]:
-
-
 scenes = find_scenes(path)
-
-
-# In[ ]:
 
 
 def to_seconds(string):
@@ -52,14 +47,8 @@ for j in range(len(scenes)):
     timestamp.append(round(to_seconds(scenes[j][1].get_timecode()),3))
 
 
-# In[ ]:
-
-
 #from moviepy.video.io.ffmpeg_tools import ffmpeg_extract_subclip
 #ffmpeg_extract_subclip('/Users/juanhuml/Desktop/Tomjerry.mp4',3, 7, targetname="/Users/juanhuml/Desktop/test.mp4")
-
-
-# In[ ]:
 
 
 from moviepy.editor import *
